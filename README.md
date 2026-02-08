@@ -19,16 +19,16 @@
 
 # Third-Party Libraries and Licenses 第三方库及其协议
 This project includes the following third-party libraries:
-1. **fNbt(https://github.com/mstefarov/fNbt)**  
+1. **[fNbt](https://github.com/mstefarov/fNbt)**  
    Copyright (c) 2025 Matvei Stefarov
    fNbt is licensed under the **3-Clause BSD License**. See the full license in [docs/LICENSE.txt](docs/LICENSE.txt).
-2. **LitJSON(https://github.com/LitJSON/litjson)**  
+2. **[LitJSON](https://github.com/LitJSON/litjson)**  
    Copyright (c) 2020  
    LitJSON is released into the **Public Domain** via the [Unlicense](http://unlicense.org/).  
    "The software is provided 'as is', without warranty of any kind."
-3. **Tommy(https://github.com/dezhidki/Tommy)**  
+3. **[Tommy](https://github.com/dezhidki/Tommy)**  
    Copyright (c) 2020 Denis Zhidkikh  
    This software is licensed under the **MIT License**. See the full license above.
-4. **Tommy.Serializer(https://github.com/instance-id/Tommy.Serializer)**  
+4. **[Tommy.Serializer](https://github.com/instance-id/Tommy.Serializer)**  
    Copyright (c) 2020 Dan  
    This software is licensed under the **MIT License**. See the full license above.
