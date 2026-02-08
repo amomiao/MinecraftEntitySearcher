@@ -1,0 +1,62 @@
+# Windows 确保忽略缩略图和系统文件
+Thumbs.db
+ehthumbs.db
+
+# Visual Studio 配置文件和临时文件
+.vs/
+.vscode/
+.idea/
+.vs2019/
+.vs2017/
+.vs2015/
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# .NET 生成文件
+bin/
+obj/
+
+# ASP.NET 文件
+# (仅适用于包含 ASP.NET 项目的情况)
+wwwroot/
+package-lock.json
+
+# Microsoft Azure 文件
+# .NET core 扩展和工具
+.project.json
+artifacts/
+
+# Rider IDE 文件
+.idea/
+
+# JetBrains Rider 中的额外缓存文件
+.idea/
+
+# JetBrains Rider 的工作目录
+.idea/
+
+# WPF 配置文件生成的临时文件
+# 你可以根据具体需要调整
+bin/
+obj/
+
+# Windows 系统特有的文件
+Desktop.ini
+$RECYCLE.BIN/
+
+# 忽略 NuGet 包的相关文件
+# 如果你将 NuGet 包放在全局缓存或其他地方
+# 这些文件并不需要加入版本控制
+.nuget/
+packages/
+
+# Rider 缓存文件
+.idea/

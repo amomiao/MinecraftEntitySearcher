@@ -1,0 +1,74 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace MoNbtSearcher.Demo {
+    /// <summary>
+    /// 这是一个在Unity中模拟的窗体Demo, 其他开发平台需要在注释情况下Review
+    /// </summary>
+    public class WindowDemo : MonoBehaviour {
+        // 用户填写的过滤调节
+        public TagKV[] filterDatas = new TagKV[0];
+        // 每一个可用的维度
+        List<string> dimPaths;
+
+        // 逻辑类
+        NbtSearcher ns = new NbtSearcher();
+        // 搜索结果
+        List<EntityPoiData> resultList = new List<EntityPoiData>();
+
+        // 程序一运行就做
+        private void Awake() {
+            MoNbtSearcherHelper.LoadLocalData();
+        }
+
+        // 玩家选取level文件
+        void Start() { 
+            string savePath = "D:\\000Game\\MC\\PCL\\.minecraft\\versions\\世界之旅\\saves\\我的世界\\level.dat";
+            if (ns.TryInit(savePath, out dimPaths)) {
+                ns.StartReadMCA(MoNbtSearcherHelper.ConfigData.ThreadNum, dimPaths.ToArray());
+                MoNbtSearcherHelper.TryGetPlayerData(ns.Root);
+                MoNbtSearcherHelper.SaveIncreDimName(dimPaths);
+            }
+        }
+
+        private void Update() {
+            // 玩家选取level文件后做
+            if (!ns.MCAReader.IsCompleted) {
+                Debug.Log($"{ns.MCAReader.GetProgress()}");
+            }
+            // 展示搜索结果
+            if (ns.EntityTagReader.IsCompleted && resultList.Count != 0) {
+                for (int i = 0; i < resultList.Count; i++) {
+                    Debug.Log(resultList[i].ToString());
+                }
+                Debug.Log($"查询到数据:{resultList.Count}条");
+                resultList.Clear();
+            }
+        }
+
+        // 玩家进行搜索
+        [ContextMenu("Search")]
+        public void Search() {
+            resultList.Clear();
+            if (!ns.MCAReader.IsCompleted) {
+                Debug.LogError("等待数据加载完成再操作");
+                return;
+            }
+            ns.StartReadEntityTag(filterDatas, MoNbtSearcherHelper.ConfigData.ThreadNum, dimPaths.ToArray());
+            // 等待搜索完成
+            Task.Run(() => {
+                // 搜索完成
+                while (!ns.EntityTagReader.IsCompleted) {
+                    continue;
+                }
+                foreach (var kv in ns.EntityTagReader.DimEntityTagDic) {
+                    foreach (var item in kv.Value) {
+                        resultList.Add(new EntityPoiData(kv.Key, item));
+                    }
+                }
+                ns.EntityTagReader.Clear();
+            });
+        }
+    }
+}
