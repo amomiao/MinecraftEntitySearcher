@@ -1,6 +1,7 @@
 # MinecraftEntitySearcher 使用说明
 这个软件制作的初衷是让玩家能够通过读取存档数据，找到他的“动物朋友（酒狐）”。因为这个功能已经实现，所以尽管功能比较简陋，也发布出来给大家使用。
-警告: 存档中如果某个实体.mca记录的区块数据太多, 触发了.mcr额外存储, 可以.mcr不会被读, 程序对.mca的运行未经测试。
+仅为搜索女仆,请优先在"存档\data\touhou_little_maid_world_data.dat"中使用 **[NbtStudio](https://github.com/tryashtar/nbt-studio)** 进行寻找!
+警告: 存档中如果某个实体.mca记录的区块数据太多, 触发了.mcr额外存储, 可以确定.mcr不会被读, 此时对.mca的读取未经可靠性测试。
 
 ## 使用步骤
 1. 启动 `MoNbtSearcher.exe`。
